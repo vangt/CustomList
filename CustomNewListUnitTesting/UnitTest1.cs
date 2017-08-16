@@ -87,5 +87,29 @@ namespace CustomNewListUnitTesting
             //Assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        [TestMethod]
+        public void Iterate_List_Objects()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            //TODO: Add code that iterates through list?
+
+            //Act
+
+            //Assert
+        }
+
+        [TestMethod]
+        public void Override_ToString_NewReturn()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+
+
+            //Act
+
+            //Assert
+        }
     }
 }
