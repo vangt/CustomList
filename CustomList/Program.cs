@@ -10,6 +10,9 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
+            List<string> name = new List<string>();
+            name.Add("1");
+            name.Count();
         }
     }
 }
