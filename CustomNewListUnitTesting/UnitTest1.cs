@@ -38,6 +38,23 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
+        public void Find_Item_ArrayList()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            int indexNumber = 0;
+            string name = "Tim";
+            string expectedResult = "Tim";
+
+            //Act
+            customList[0] = name;
+            string result = customList[0];
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
         public void Add_Array_ObjectAdd()
         {
             //Arrange
@@ -46,6 +63,7 @@ namespace CustomNewListUnitTesting
             string expectedResult = "Tim";
 
             //Act
+            customList.Add(name);
             string result = customList[0];
 
             //Assert
