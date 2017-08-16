@@ -8,7 +8,7 @@ namespace CustomNewListUnitTesting
     public class UnitTest1
     {
         [TestMethod]
-        public void Get_Array_Size()
+        public void Get_List_Size()
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
@@ -22,7 +22,7 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        public void Add_Array_IncreaseSize()
+        public void Add_List_IncreaseSize()
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
@@ -30,7 +30,7 @@ namespace CustomNewListUnitTesting
             int expectedResult = 1;
 
             //Act
-            customList.Capcity(1);
+            customList.Capcity;
             int result = customList.Count;
 
             //Assert
@@ -38,16 +38,15 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        public void Find_Item_ArrayList()
+        public void Find_Item_ListItem()
         {
             //Arrange
-            CustomNewList<string> customList = new CustomNewList<string>();
+            CustomNewList<int> customList = new CustomNewList<int>();
             int indexNumber = 0;
-            string name = "Tim";
-            string expectedResult = "Tim";
+            int expectedResult = 0;
 
             //Act
-            customList[0] = name;
+            customList.Capcity;
             string result = customList[0];
 
             //Assert
@@ -55,7 +54,7 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        public void Add_Array_ObjectAdd()
+        public void Add_List_ObjectAdd()
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
@@ -63,8 +62,27 @@ namespace CustomNewListUnitTesting
             string expectedResult = "Tim";
 
             //Act
+            customList.Capacity;
             customList.Add(name);
             string result = customList[0];
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void Remove_List_ObjectRemove()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            string name = "Tim";
+            int expectedResult = 0;
+
+            //Act
+            customList.Capacity;
+            customList.Add(name);
+            customList.Remove("Tim");
+            int result = customList.Count;
 
             //Assert
             Assert.AreEqual(expectedResult, result);
