@@ -102,9 +102,27 @@ namespace CustomNewListUnitTesting
             string expectedResult = "Tim";
 
             //Act
-            customList.Capacity;
             customList.Add(name);
             string result = customList[0];
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void Check_List_ZeroIndex()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            string name = "Tim";
+            string nametwo = "Joe";
+            string expectedResult = "Joe";
+
+            //Act
+            customList.Add(name);
+            customList.Add(nametwo);
+            customList.Remove(0);
+            string result = customList[1];
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -119,7 +137,6 @@ namespace CustomNewListUnitTesting
             int expectedResult = 0;
 
             //Act
-            customList.Capacity;
             customList.Add(name);
             customList.Remove("Tim");
             int result = customList.Count;
