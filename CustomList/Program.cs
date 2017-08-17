@@ -10,11 +10,10 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            List<string> name = new List<string>();
-            name.Add("1");
+            List<int> name = new List<int>();
+            name.Add(1);
+            double dog = 9;
             
-            name.
-
             name.RemoveAt(0);
             
             name.Count();

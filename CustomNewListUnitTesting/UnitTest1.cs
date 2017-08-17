@@ -158,14 +158,20 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        public void Override_ToString_NewReturn()
+        public void Check_List_ReturnSuperString()
         {
             //Arrange
-            CustomNewList<string> customList = new CustomNewList<string>();
-            
+            CustomNewList<int> customList = new CustomNewList<int>();
+            customList.Add(1);
+            customList.Add(2);
+            customList.Add(3);
+            string expectedResult = "123";
+
             //Act
+            string result = customList.String();
 
             //Assert
+            Assert.AreEqual(expectedResult, result);
         }
     }
 }
