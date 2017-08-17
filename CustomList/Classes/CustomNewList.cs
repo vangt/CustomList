@@ -8,5 +8,6 @@ namespace CustomList.Classes
 {
     public class CustomNewList<T>
     {
+       
     }
 }
