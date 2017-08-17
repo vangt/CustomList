@@ -43,10 +43,11 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
-            int index = 0;
+            customList.Add("Tim");
 
             //Act
-            customList.RemoveAt(index);
+            customList.Remove();
+            customList.Remove();
         }
 
         [TestMethod]
@@ -55,10 +56,9 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
-            int index = 3;
 
             //Act
-            customList.RemoveAt(index);
+            customList.Remove(index);
         }
 
         [TestMethod]
@@ -155,7 +155,7 @@ namespace CustomNewListUnitTesting
             string name = "Tim";
             string nametwo = "Joe";
             string namethree = "Mark";
-            string expectedResult = "Tim ,Joe, Mark";
+            string expectedResult = "Tim, Joe, Mark";
 
             //Act
             customList.Add(name);
@@ -184,16 +184,19 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        public void Check_List_ReturnStringNull()
+        public void Check_ListWithNull_ReturnString()
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
-            customList.Add("Tim");
-            customList.Add("");
-            customList.Add("Joe");
+            string name = "Tim";
+            string nameTwo = null;
+            string nameThree = "Joe";
             string expectedResult = "TimJoe";
 
             //Act
+            customList.Add(name);
+            customList.Add(nameTwo);
+            customList.Add(nameThree);
             string result = customList.ToString();
 
             //Assert
@@ -224,7 +227,6 @@ namespace CustomNewListUnitTesting
             string nameTwo = "Joe";
             string nameThree = "Mark";
             string nameFour = "Peter";
-            string expectedResult = "Mark";
 
             //Act
             customList.Add(name);
@@ -238,10 +240,9 @@ namespace CustomNewListUnitTesting
             customListThree.Add(nameFour);
 
             customList = customList + customListTwo;
-            string result = customList[3];
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(customListThree, customList);
         }
 
         [TestMethod]
@@ -274,6 +275,7 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
+        [ExpectedException(typeof(FormatException))]
         public void Subtract_Two_ListOne()
         {
             //Arrange
@@ -365,7 +367,6 @@ namespace CustomNewListUnitTesting
             string nameTwo = "Joe";
             string wordyOne = " is cool ";
             string wordyTwo = " is not cool";
-            string expectedResult = "Tim is cool Joe is not cool";
 
             //Act
             customList.Add(nameOne);
@@ -373,10 +374,15 @@ namespace CustomNewListUnitTesting
             customListTwo.Add(wordyOne);
             customListTwo.Add(wordyTwo);
 
-            customListThree = customList.Zip(customListTwo);
+            customListThree.Add(nameOne);
+            customListThree.Add(nameTwo);
+            customListThree.Add(wordyOne);
+            customListThree.Add(wordyTwo);
+
+            customList = customList.Zip(customListTwo);
 
             //Assert
-            Assert.AreEqual(expectedResult, customListThree);
+            Assert.AreEqual(customList, customListThree);
         }
 
         [TestMethod]
