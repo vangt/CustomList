@@ -82,12 +82,14 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<int> customList = new CustomNewList<int>();
-            int number = 7;
+            int number = 3;
+            int numberTwo = 7;
             int expectedResult = 7;
 
             //Act
-            customList.Add(number)
-            string result = customList[0];
+            customList.Add(number);
+            customList.Add(numberTwo);
+            string result = customList[1];
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -153,13 +155,13 @@ namespace CustomNewListUnitTesting
             string name = "Tim";
             string nametwo = "Joe";
             string namethree = "Mark";
-            string expectedResult = "Joe";
+            string expectedResult = "Tim ,Joe, Mark";
 
             //Act
             customList.Add(name);
             customList.Add(nametwo);
             customList.Add(namethree);
-            string result = customList.Find("Joe");
+            string result = customList.FindAll(string);
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -193,6 +195,42 @@ namespace CustomNewListUnitTesting
 
             //Act
             decimal result = customList[0];
+        }
+
+        [TestMethod]
+        public void Add_List_OverloadPlus()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            string name = "Tim";
+            string nametwo = "Joe";
+            string expectedResult = "TimJoe";
+
+            //Act
+            customList.Add(name);
+            customList.Add(nameTwo);
+            string result = customList.Plus(0, 1);
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void Subtract_List_OverloadMinus()
+        {
+            //Arrange
+            CustomNewList<int> customList = new CustomNewList<int>();
+            int firstNumber = 10;
+            int secondNumber = 1;
+            int expectedResult = 9;
+
+            //Act
+            customList.Add(firstNumber);
+            customList.Add(secondNumber);
+            string result = customList.Subtract(0, 1);
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
         }
     }
 }
