@@ -22,6 +22,33 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
+        public void Get_List_SizeOfOne()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            string addString = "Tim";
+            int expectedResult = 1;
+
+            //Act
+            customList.Add(addString);
+            int result = customList.Count;
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void Prevent_List_SizeOfNegative()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+
+            //Act
+
+            //Assert
+        }
+
+        [TestMethod]
         public void Add_List_IncreaseSize()
         {
             //Arrange
