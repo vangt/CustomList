@@ -123,7 +123,7 @@ namespace CustomNewListUnitTesting
             //Act
             customList.Add(name);
             customList.Add(nametwo);
-            customList.Remove(0);
+            customList.Remove("Tim");
             string result = customList[0];
 
             //Assert
@@ -161,10 +161,9 @@ namespace CustomNewListUnitTesting
             customList.Add(name);
             customList.Add(nametwo);
             customList.Add(namethree);
-            string result = customList.FindAll(string);
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(expectedResult, customList);
         }
 
         [TestMethod]
@@ -178,7 +177,24 @@ namespace CustomNewListUnitTesting
             string expectedResult = "123";
 
             //Act
-            string result = customList.String();
+            string result = customList.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void Check_List_ReturnStringNull()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            customList.Add("Tim");
+            customList.Add("");
+            customList.Add("Joe");
+            string expectedResult = "TimJoe";
+
+            //Act
+            string result = customList.ToString();
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -203,7 +219,7 @@ namespace CustomNewListUnitTesting
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
             CustomNewList<string> customListTwo = new CustomNewList<string>();
-
+            CustomNewList<string> customListThree = new CustomNewList<string>();
             string name = "Tim";
             string nameTwo = "Joe";
             string nameThree = "Mark";
@@ -216,9 +232,13 @@ namespace CustomNewListUnitTesting
             customListTwo.Add(nameThree);
             customListTwo.Add(nameFour);
 
-            CustomNewList<string> customListThree = customList + customListTwo;
+            customListThree.Add(name);
+            customListThree.Add(nameTwo);
+            customListThree.Add(nameThree);
+            customListThree.Add(nameFour);
 
-            string result = customListThree[3];
+            customList = customList + customListTwo;
+            string result = customList[3];
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -230,6 +250,7 @@ namespace CustomNewListUnitTesting
             //Arrange
             CustomNewList<int> customList = new CustomNewList<int>();
             CustomNewList<int> customListTwo = new CustomNewList<int>();
+            CustomNewList<int> customListThree;
             int firstNumber = 10;
             int secondNumber = 1;
             int thirdNumber = 1;
@@ -244,12 +265,58 @@ namespace CustomNewListUnitTesting
             customListTwo.Add(forthNumber);
             customListTwo.Add(fifthNumber);
 
-            customListTwo = customListTwo - customList;
+            customListThree = customListTwo - customList;
 
-            int result = customListTwo[0];
+            int result = customListThree[0];
 
             //Assert
             Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void Subtract_Two_ListOne()
+        {
+            //Arrange
+            CustomNewList<int> numbers = new CustomNewList<int>();
+            CustomNewList<string> names = new CustomNewList<string>();
+            int firstNumber = 0;
+            int secondNumber = 1;
+            string firstName = "Tim";
+            string secondName = "Joe";
+            int expectedResult = 0;
+
+            //Act
+            numbers.Add(firstNumber);
+            numbers.Add(secondNumber);
+            names.Add(firstName);
+            names.Add(secondName);
+
+            numbers = numbers - names;
+
+            int result = numbers[0];
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void Add_TwoList_DifferentData()
+        {
+            //Arrange
+            CustomNewList<string> names = new CustomNewList<string>();
+            CustomNewList<int> numbers = new CustomNewList<int>();
+            CustomNewList<string> newNames = new CustomNewList<string>();
+            string name = "Tim";
+            string nametwo = "Joe";
+            int number = 1;
+
+            //Act
+            names.Add(name);
+            names.Add(nametwo);
+            numbers.Add(number);
+            
+            newNames = names + number;
         }
 
         [TestMethod]
@@ -260,10 +327,10 @@ namespace CustomNewListUnitTesting
             CustomNewList<int> customListTwo = new CustomNewList<int>();
             CustomNewList<int> customListThree = new CustomNewList<int>();
             int firstNumber = 1;
-            int secondNumber = 2;
-            int thirstNumber = 3;
-            int forthNumber = 4;
-            int fifthNumber = 5;
+            int secondNumber = 3;
+            int thirstNumber = 5;
+            int forthNumber = 2;
+            int fifthNumber = 4;
             int sixthNumber = 6;
 
             //Act
@@ -285,6 +352,53 @@ namespace CustomNewListUnitTesting
 
             //Assert
             Assert.AreEqual(customList, customListThree);
+        }
+
+        [TestMethod]
+        public void Zip_TwoList_Strings()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            CustomNewList<string> customListTwo = new CustomNewList<string>();
+            CustomNewList< string> customListThree = new CustomNewList<string>();
+            string nameOne = "Tim";
+            string nameTwo = "Joe";
+            string wordyOne = " is cool ";
+            string wordyTwo = " is not cool";
+            string expectedResult = "Tim is cool Joe is not cool";
+
+            //Act
+            customList.Add(nameOne);
+            customList.Add(nameTwo);
+            customListTwo.Add(wordyOne);
+            customListTwo.Add(wordyTwo);
+
+            customListThree = customList.Zip(customListTwo);
+
+            //Assert
+            Assert.AreEqual(expectedResult, customListThree);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void Check_TwoList_ZipFalse()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            CustomNewList<int> customListTwo = new CustomNewList<int>();
+            CustomNewList<string> customListThree = new CustomNewList<string>();
+            string nameOne = "Tim";
+            string nameTwo = "Joe";
+            int firstNumber = 1;
+            int secondNumber = 2;
+
+            //Act
+            customList.Add(nameOne);
+            customList.Add(nameTwo);
+            customListTwo.Add(firstNumber);
+            customListTwo.Add(secondNumber);
+
+            customListThree = customList.Zip(customListTwo);
         }
     }
 }
