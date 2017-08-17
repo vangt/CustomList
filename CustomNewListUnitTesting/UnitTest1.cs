@@ -150,11 +150,19 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
-            //TODO: Add code that iterates through list?
+            string name = "Tim";
+            string nametwo = "Joe";
+            string namethree = "Mark";
+            string expectedResult = "Joe";
 
             //Act
+            customList.Add(name);
+            customList.Add(nametwo);
+            customList.Add(namethree);
+            string result = customList.Find("Joe");
 
             //Assert
+            Assert.AreEqual(expectedResult, result);
         }
 
         [TestMethod]
@@ -172,6 +180,19 @@ namespace CustomNewListUnitTesting
 
             //Assert
             Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void Error_List_DataType()
+        {
+            //Arrange
+            CustomNewList<bool> customList = new CustomNewList<bool>();
+            customList.Add(false);
+            customList.Add(true);
+
+            //Act
+            decimal result = customList[0];
         }
     }
 }
