@@ -38,14 +38,27 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Prevent_List_SizeOfNegative()
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
+            int index = 0;
 
             //Act
+            customList.RemoveAt(index);            
+        }
 
-            //Assert
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Prevent_List_CapcityToShort()
+        {
+            //Arrange
+            CustomNewList<string> customList = new CustomNewList<string>();
+            int index = 3;
+
+            //Act
+            customList.RemoveAt(index);
         }
 
         [TestMethod]
