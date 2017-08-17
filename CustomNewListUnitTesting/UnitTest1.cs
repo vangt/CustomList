@@ -51,7 +51,7 @@ namespace CustomNewListUnitTesting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Prevent_List_CapcityToShort()
+        public void Prevent_List_NoObject()
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
@@ -82,11 +82,11 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<int> customList = new CustomNewList<int>();
-            int indexNumber = 0;
-            int expectedResult = 0;
+            int number = 7;
+            int expectedResult = 7;
 
             //Act
-            customList.Capcity;
+            customList.Add(number)
             string result = customList[0];
 
             //Assert
@@ -122,7 +122,7 @@ namespace CustomNewListUnitTesting
             customList.Add(name);
             customList.Add(nametwo);
             customList.Remove(0);
-            string result = customList[1];
+            string result = customList[0];
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -162,8 +162,7 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
-
-
+            
             //Act
 
             //Assert
