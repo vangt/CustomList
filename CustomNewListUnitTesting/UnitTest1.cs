@@ -66,11 +66,11 @@ namespace CustomNewListUnitTesting
         {
             //Arrange
             CustomNewList<string> customList = new CustomNewList<string>();
-            int increaseBy = 1;
+            string name = "Tim";
             int expectedResult = 1;
 
             //Act
-            customList.Capcity;
+            customList.Add(name);
             int result = customList.Count;
 
             //Assert

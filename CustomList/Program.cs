@@ -13,6 +13,8 @@ namespace CustomList
             List<string> name = new List<string>();
             name.Add("1");
             
+            name.
+
             name.RemoveAt(0);
             
             name.Count();
