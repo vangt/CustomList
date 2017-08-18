@@ -8,13 +8,14 @@ namespace CustomList.Classes
 {
     public class CustomNewList<T>
     {
-        public T[] array;
-        private int count = 0;
-        private int capacity = 0;
+        private T[] array;
+        private int count;
+        private int capacity;
 
         public CustomNewList()
         {
-
+            this.capacity = Capacity;
+            this.count = Count;
         }
 
         public T this[int index]
@@ -53,9 +54,44 @@ namespace CustomList.Classes
             }
         }
 
-        public void GetCount()
+        public void GetCapacity()
         {
+            if(Capacity == 0)
+            {
+                Capacity += 4;
+            }
+            else if(Count == Capacity)
+            {
+                Capacity *= 2;
+            }
+        }
 
+        public void Add(T item)
+        {
+            GetCapacity();
+            T[] newArray = new T[Capacity];
+            newArray = NewArrays(newArray);            
+            newArray[Count] = item;
+            array = newArray;
+            Count++;
+        }
+
+        private T[] NewArrays(T[] newArray)
+        {
+            for (int i = 0; i < this.Count; i++)
+            {
+                newArray[i] = array[i];
+            }
+
+            return newArray;
+        }
+
+        public void Remove(T item)
+        {
+            foreach(T i in array)
+            {
+                
+            }
         }
     }
 }

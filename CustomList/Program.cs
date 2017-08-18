@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomList.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,15 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            List<int> numb = new List<int>();
+            CustomNewList<int> customList = new CustomNewList<int>();
+            List<int> list = new List<int>();
+            customList.Add(0);
+            customList.Add(1);
+            list.Add(1);
+            list.Add(2);
+            list.Add(2);
+            list.Add(2);
+            list.Add(2);
         }
     }
 }
