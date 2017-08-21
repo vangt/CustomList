@@ -184,7 +184,40 @@ namespace CustomList.Classes
         public CustomNewList<T> Zip(CustomNewList<T> secondArray)
         {
             CustomNewList<T> newList = new CustomNewList<T>();
-
+            int counter = Count;
+            
+            if(Count > secondArray.Count)
+            {
+                for(int i = 0; i < Count; i++)
+                {
+                    if (secondArray.Count != 0)
+                    {
+                        newList.Add(array[i]);
+                        newList.Add(secondArray[i]);
+                        secondArray.Count--;
+                    }
+                    else if(secondArray.Count == 0)
+                    {
+                        newList.Add(array[i]);
+                    }
+                }
+            }
+            else if(secondArray.Count > counter)
+            {
+                for(int i = 0; i < secondArray.Count; i++)
+                {
+                    if (counter != 0)
+                    {
+                        newList.Add(array[i]);
+                        newList.Add(secondArray[i]);
+                        counter--;
+                    }
+                    else if(counter == 0)
+                    {
+                        newList.Add(secondArray[i]);
+                    }
+                }
+            }
 
 
             return newList;
