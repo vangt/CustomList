@@ -90,14 +90,14 @@ namespace CustomList.Classes
         public void Remove(T item)
         {
             T[] newArray = new T[Count];
-            T[] secondArray = new T[Count];
+            T[] secondArray = new T[1];
             int counter = 0;
             int minusCounter = 0;
-            for(int number = 0; number < Count; number++)
+            for (int number = 0; number < Count; number++)
             {
-                if(array[number].Equals(item))
+                if (array[number].Equals(item) && minusCounter != 1)
                 {
-
+                    secondArray[0] = item;
                     minusCounter++;
                 }
                 else
