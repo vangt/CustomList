@@ -218,6 +218,14 @@ namespace CustomList.Classes
                     }
                 }
             }
+            else
+            {
+                for(int i = 0; i < Count; i++)
+                {
+                    newList.Add(array[i]);
+                    newList.Add(secondArray[i]);
+                }
+            }
             return newList;
         }
     }

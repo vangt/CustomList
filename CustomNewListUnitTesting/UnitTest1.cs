@@ -371,24 +371,18 @@ namespace CustomNewListUnitTesting
             CustomNewList< string> customListThree = new CustomNewList<string>();
             string nameOne = "Tim";
             string nameTwo = "Joe";
-            string wordyOne = " is cool ";
-            string wordyTwo = " is not cool";
+            string wordyOne = "is cool";
+            string expectedResult = "is cool";
 
             //Act
             customList.Add(nameOne);
             customList.Add(nameTwo);
             customListTwo.Add(wordyOne);
-            customListTwo.Add(wordyTwo);
 
-            customListThree.Add(nameOne);
-            customListThree.Add(nameTwo);
-            customListThree.Add(wordyOne);
-            customListThree.Add(wordyTwo);
-
-            customList = customList.Zip(customListTwo);
+            customListThree = customList.Zip(customListTwo);
 
             //Assert
-            Assert.AreEqual(customList, customListThree);
+            Assert.AreEqual(expectedResult, customListThree[1]);
         }
 
         [TestMethod]
