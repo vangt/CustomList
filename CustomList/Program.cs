@@ -12,9 +12,13 @@ namespace CustomList
         static void Main(string[] args)
         {
             CustomNewList<string> customList = new CustomNewList<string>() { "tim", "joe", "mark" };
+            CustomNewList<string> customListTwo = new CustomNewList<string>() { "peter", "paul", "dao" };
             List<string> list = new List<string>();
-            
-            customList.ToString();
+
+            CustomNewList<string> customListThree = new CustomNewList<string>();
+
+            customListThree = customList + customListTwo;
+
         }
     }
 }

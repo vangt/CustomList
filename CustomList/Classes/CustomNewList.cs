@@ -142,5 +142,15 @@ namespace CustomList.Classes
                 yield return i;
             }
         }
+
+        public static CustomNewList<T> operator + (CustomNewList<T> array, CustomNewList<T> addArray)
+        {
+            for (int i = 0; i < addArray.Count; i++)
+            {
+                array.Add(addArray[i]);
+            }
+
+            return array;
+        }
     }
 }
