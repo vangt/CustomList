@@ -278,30 +278,29 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
         public void Subtract_Two_ListOne()
         {
             //Arrange
-            CustomNewList<int> numbers = new CustomNewList<int>();
-            CustomNewList<string> names = new CustomNewList<string>();
-            int firstNumber = 0;
-            int secondNumber = 1;
-            string firstName = "Tim";
-            string secondName = "Joe";
-            int expectedResult = 0;
+            CustomNewList<string> name = new CustomNewList<string>();
+            CustomNewList<string> names = new CustomNewList<string>();            
+            string firstName = "Mark";
+            string secondname = "Peter";
+            string thirdName = "Tim";
+            string fourthName = "Joe";
+            string fifthName = "Mark";
+            string expectedResult = "Peter";
 
             //Act
-            numbers.Add(firstNumber);
-            numbers.Add(secondNumber);
-            names.Add(firstName);
-            names.Add(secondName);
+            name.Add(firstName);
+            name.Add(secondname);
+            names.Add(thirdName);
+            names.Add(fourthName);
+            names.Add(fifthName);
 
-            numbers = numbers - names;
-
-            int result = numbers[0];
+            CustomNewList<string> results = name - names;
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(expectedResult, results[0]);
         }
 
         [TestMethod]
