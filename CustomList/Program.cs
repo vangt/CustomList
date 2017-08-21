@@ -11,15 +11,10 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomNewList<int> customList = new CustomNewList<int>();
-            List<int> list = new List<int>();
-            customList.Add(0);
-            customList.Add(1);
-            list.Add(1);
-            list.Add(2);
-            list.Add(2);
-            list.Add(2);
-            list.Add(2);
+            CustomNewList<string> customList = new CustomNewList<string>() { "tim", "joe", "mark" };
+            List<string> list = new List<string>();
+            
+            customList.ToString();
         }
     }
 }

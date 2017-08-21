@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList.Classes
 {
-    public class CustomNewList<T>
+    public class CustomNewList<T> : IEnumerable
     {
         private T[] array;
         private int count;
@@ -88,9 +89,57 @@ namespace CustomList.Classes
 
         public void Remove(T item)
         {
-            foreach(T i in array)
+            T[] newArray = new T[Count];
+            int counter = 0;
+            int minusCounter = 0;
+            for(int number = 0; number < Count; number++)
             {
-                
+                if(array[number].Equals(item))
+                {
+                    minusCounter++;
+                }
+                else
+                {
+                    newArray[counter] = array[number];
+                    counter++;
+                }
+            }
+            Count -= minusCounter;
+            newArray = ShiftArray(newArray);
+            array = newArray;   
+        }
+
+        public T[] ShiftArray(T[] nextArray)
+        {
+            T[] temp = new T[Count];
+
+            for (int i = 0; i < Count; i++)
+            {
+                temp[i] = nextArray[i];
+            }
+
+            return temp;
+        }
+
+        public override string ToString()
+        {
+            string newString = "";
+            StringBuilder combinedString = new StringBuilder();
+           
+            for(int i = 0; i < this.Count; i++)
+            {
+                combinedString.AppendFormat($"{array[i]}", array[i]);
+            }
+            newString += combinedString;
+
+            return newString;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for(int i = 0; i < Count; i++)
+            {
+                yield return i;
             }
         }
     }
