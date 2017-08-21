@@ -11,13 +11,12 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomNewList<string> customList = new CustomNewList<string>() { "tim", "joe", "mark" };
-            CustomNewList<string> customListTwo = new CustomNewList<string>() { "peter", "paul", "dao" };
-            List<string> list = new List<string>();
+            CustomNewList<string> customList = new CustomNewList<string>() { "A", "B", "C", "C", "D", "C", "E", "C"};
+            CustomNewList<string> customListTwo = new CustomNewList<string>() { "C", "C", "E", "A", "R"};
+            List<string> list = new List<string>() { "A", "B", "C", "C", "D", "C", "E", "C" };
 
-            CustomNewList<string> customListThree = new CustomNewList<string>();
-
-            customListThree = customList + customListTwo;
+            customList.Remove("C");
+            list.Remove("C");
 
         }
     }

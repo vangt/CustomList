@@ -90,12 +90,14 @@ namespace CustomList.Classes
         public void Remove(T item)
         {
             T[] newArray = new T[Count];
+            T[] secondArray = new T[Count];
             int counter = 0;
             int minusCounter = 0;
             for(int number = 0; number < Count; number++)
             {
                 if(array[number].Equals(item))
                 {
+
                     minusCounter++;
                 }
                 else
@@ -139,7 +141,7 @@ namespace CustomList.Classes
         {
             for(int i = 0; i < Count; i++)
             {
-                yield return i;
+                yield return array[i];
             }
         }
 
@@ -151,6 +153,34 @@ namespace CustomList.Classes
             }
 
             return array;
+        }
+
+        public static CustomNewList<T> operator - (CustomNewList<T> array, CustomNewList<T> secondArray)
+        {
+            CustomNewList<T> news = array;
+            CustomNewList<T> secondNews = secondArray;
+
+
+            for(int j = 0; j < secondNews.Count; j++)
+            {
+                CustomNewList<T> temp = new CustomNewList<T>();
+                CustomNewList<T> tempTwo = new CustomNewList<T>();
+
+                for(int i = 0; i < news.Count; i++)
+                {
+                    if(secondNews[j].Equals(news[i]) && tempTwo.Count == 0)
+                    {
+                        tempTwo.Add(news[i]);
+                    }
+                    else
+                    {
+                        temp.Add(news[i]);
+                    }
+                }
+                news = temp;
+            }
+
+            return news;
         }
     }
 }
