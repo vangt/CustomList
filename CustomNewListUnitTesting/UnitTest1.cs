@@ -46,8 +46,8 @@ namespace CustomNewListUnitTesting
             customList.Add("Tim");
 
             //Act
-            customList.Remove();
-            customList.Remove();
+            customList.Remove("Tim");
+            customList.Remove("Tim");
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace CustomNewListUnitTesting
             CustomNewList<string> customList = new CustomNewList<string>();
 
             //Act
-            customList.Remove(index);
+            customList.Remove(customList[0]);
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace CustomNewListUnitTesting
             //Act
             customList.Add(number);
             customList.Add(numberTwo);
-            string result = customList[1];
+            int result = customList[1];
 
             //Assert
             Assert.AreEqual(expectedResult, result);
@@ -204,16 +204,19 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
         public void Error_List_DataType()
         {
             //Arrange
             CustomNewList<bool> customList = new CustomNewList<bool>();
             customList.Add(false);
             customList.Add(true);
+            bool expectedResult = false;
 
             //Act
-            decimal result = customList[0];
+            bool result = customList[0];
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
         }
 
         [TestMethod]
@@ -350,7 +353,7 @@ namespace CustomNewListUnitTesting
             customListThree.Add(fifthNumber);
             customListThree.Add(sixthNumber);
 
-            int result = customList.Zip(customListTwo);
+            CustomNewList<int> result = customList.Zip(customListTwo);
 
             //Assert
             Assert.AreEqual(customList, customListThree);

@@ -218,8 +218,6 @@ namespace CustomList.Classes
                     }
                 }
             }
-
-
             return newList;
         }
     }
