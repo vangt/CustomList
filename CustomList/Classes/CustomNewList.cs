@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList.Classes
 {
-    public class CustomNewList<T> : IEnumerable\
+    public class CustomNewList<T> : IEnumerable
     {
         private T[] array;
         private int count;
