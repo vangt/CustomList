@@ -51,7 +51,7 @@ namespace CustomNewListUnitTesting
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void Prevent_List_NoObject()
         {
             //Arrange
@@ -155,7 +155,7 @@ namespace CustomNewListUnitTesting
             string name = "Tim";
             string nametwo = "Joe";
             string namethree = "Mark";
-            string expectedResult = "Tim, Joe, Mark";
+            string expectedResult = "Joe";
 
             //Act
             customList.Add(name);
@@ -163,7 +163,7 @@ namespace CustomNewListUnitTesting
             customList.Add(namethree);
 
             //Assert
-            Assert.AreEqual(expectedResult, customList);
+            Assert.AreEqual(expectedResult, customList[1]);
         }
 
         [TestMethod]
@@ -359,7 +359,7 @@ namespace CustomNewListUnitTesting
             CustomNewList<int> result = customList.Zip(customListTwo);
 
             //Assert
-            Assert.AreEqual(customList, customListThree);
+            Assert.AreEqual(result, customListThree);
         }
 
         [TestMethod]
